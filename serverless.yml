@@ -1,0 +1,19 @@
+service: python
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: eu-west-1
+  timeout: 60
+  role: arn:aws:iam::973117181313:role/Lambda2s3
+
+functions:
+  updateIndex:
+    name: UpdateS3IndexMediktiv
+    handler: S3indexUpdater.updateS3
+
+package:
+  exclude:
+    - a/** # virtualenv
+    - venv/** # virtualenv
+    - .vscode/** # Visual Studio code
